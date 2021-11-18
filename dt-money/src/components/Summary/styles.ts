@@ -27,7 +27,7 @@ export const Container = styled.div`
     }
 
     &.highlight-backgroud {
-      background: var(--green);
+      background: #4040ff;
       color: #FFF
     }
   }

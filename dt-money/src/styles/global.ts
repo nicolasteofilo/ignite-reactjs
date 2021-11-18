@@ -14,6 +14,9 @@ export const GlobalStyle = createGlobalStyle`
     --text-title: #363f5f;
     --text-body: #969cb3;
     --shape: #ffffff;
+    --input-background: #e7e9ee;
+    --border: #d7d7d7;
+    --orange: #ff9000;
   }
 
   * {
@@ -75,5 +78,20 @@ export const GlobalStyle = createGlobalStyle`
     padding: 3rem; // 48px
     position: relative;
     border-radius: 0.25rem; // 4px
+  }
+
+  .react-modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+
+    transition: all 0.3s;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
   }
 `

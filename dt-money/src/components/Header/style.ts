@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  background-color: var(--blue);
+  background-color: #312e38;
 `
 
 export const Content = styled.div`
@@ -24,8 +24,8 @@ export const Content = styled.div`
 
     transition: filter 0.2s;
     
-    background: rgba( 255, 255, 255, 0.25 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    background: #ff9000;
+    box-shadow: 0 8px 32px 0 rgba(255, 144, 0, 0.37);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     }
