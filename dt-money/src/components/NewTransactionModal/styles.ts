@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { darken } from 'polished';
+import styled from "styled-components";
+import { darken } from "polished";
 
 export const Container = styled.form`
   h2 {
@@ -8,8 +8,8 @@ export const Container = styled.form`
     margin-bottom: 2rem;
   }
 
-  input { 
-    width: 100%;    
+  input {
+    width: 100%;
     padding: 0 1.5rem;
     height: 4rem;
     border-radius: 0.25rem;
@@ -21,64 +21,67 @@ export const Container = styled.form`
     font-size: 1rem;
 
     &::placeholder {
-        color: var(--text-body);
+      color: var(--text-body);
     }
     & + input {
-        margin-top: 1rem;
+      margin-top: 1rem;
     }
+  }
+  button[type="submit"] {
+    width: 100%;
+    height: 4rem;
+    border-radius: 0.25rem;
+    padding: 0 1.5rem;
+    background: var(--orange);
+    color: #fff;
+    border: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
 
-}
-    button[type="submit"] {
-        width: 100%;
-        height: 4rem;
-        border-radius: 0.25rem;
-        padding: 0 1.5rem;
-        background: var(--orange);
-        color: #FFF;
-        border: 0;
-        font-size: 1rem;
-        font-weight: 600;
-        margin-top: 1.5rem;
+    transition: filter 0.2s;
 
-        transition: filter 0.2s;
-
-        &:hover {
-            filter: brightness(0.9);
-        }
+    &:hover {
+      filter: brightness(0.9);
     }
+  }
 `;
 
 export const TransactionTypeContainer = styled.div`
-    margin: 1rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+`;
 
-    button { 
-        height: 4rem;
-        border: 1px solid #d7d7d7;
-        border-radius: 0.25rem;
+interface RadioBoxProps {
+  isActive: boolean;
+}
 
-        background: transparent;
+export const RadioBox = styled.button<RadioBoxProps>`
+  height: 4rem;
+  border: 1px solid #d7d7d7;
+  border-radius: 0.25rem;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  background: ${(props) => props.isActive ? "#ccc" : "transparent"};
 
-        &:hover {
-            border-color: ${darken(0.1, '#d7d7d7')};
-        }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-        img {
-            width: 20px;
-            height: 20px;
-        }
+  &:hover {
+    border-color: ${darken(0.1, "#d7d7d7")};
+  }
 
-        span {
-            display: inline-block;
-            margin: 1rem;
-            font-size: 1rem;
-            color: var(--text-title);
-        }
-    }
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    display: inline-block;
+    margin: 1rem;
+    font-size: 1rem;
+    color: var(--text-title);
+  }
 `;
