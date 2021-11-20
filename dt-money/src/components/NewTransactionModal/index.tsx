@@ -24,15 +24,18 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
         category: '',
     });
 
-    function handleCreateNewTransaction(event: FormEvent) {
+    async function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault();
 
-        createTansaction({
+        await createTansaction({
             title: inputs.title,
             amount: inputs.amount,
             type: inputs.type,
             category: inputs.category,
         })
+
+        setInputs({ title: '', amount: 0, category: '', type: 'deposit' });
+        onRequestClose();
     }
 
     return (
