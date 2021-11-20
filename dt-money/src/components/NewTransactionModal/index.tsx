@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import closeImg from '../../assets/images/close.svg';
 import incomeImg from '../../assets/images/income.svg';
@@ -12,7 +12,17 @@ interface NewTransactionModalProps {
 }
 
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionModalProps) {
-    const [type, setType] = useState('deposit');
+    const [inputs, setInputs] = useState({
+        title: '',
+        value: 0,
+        type: 'income',
+        category: '',
+    });
+
+    function handleCreateNewTransaction(event: FormEvent) {
+        event.preventDefault();
+        console.log(inputs);
+    }
 
     return (
       <Modal
@@ -24,23 +34,27 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
           <button type="button"  onClick={onRequestClose} className="react-modal-close">
             <img src={closeImg} alt="Fechar Modal" />
           </button>
-          <Container>
+          <Container onSubmit={handleCreateNewTransaction} >
             <h2>Casdastrar</h2>
             
             <input 
                 placeholder="Título"
+                value={inputs.title}
+                onChange={event => setInputs({ ...inputs, title: event.target.value })}
             />
 
             <input
                 type="number"
                 placeholder="Valor"
+                value={inputs.value}
+                onChange={event => setInputs({ ...inputs, value: Number(event.target.value) })}
             />
 
             <TransactionTypeContainer>
                 <RadioBox
                     type="button"
-                    onClick={() => setType('deposit')}
-                    isActive={type === 'deposit'}
+                    onClick={() => setInputs({ ...inputs, type: 'deposit' })}
+                    isActive={inputs.type === 'deposit'}
                     activeColor="green"
                 >
                     <img src={incomeImg} alt="Entrada" />
@@ -48,8 +62,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
                 </RadioBox>
                 <RadioBox
                     type="button"
-                    onClick={() => setType('withdraw')}
-                    isActive={type === 'withdraw'}
+                    onClick={() => setInputs({ ...inputs, type: 'outcome' })}
+                    isActive={inputs.type === 'withdraw'}
                     activeColor="red"
                 >
                     <img src={outcomeImg} alt="Entrada" />
@@ -59,6 +73,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
 
             <input
                 placeholder="Categoria"
+                value={inputs.category}
+                onChange={event => setInputs({ ...inputs, category: event.target.value })}
             />
 
             <button type="submit">
