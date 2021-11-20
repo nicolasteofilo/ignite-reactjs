@@ -8,6 +8,22 @@ createServer({
     transaction: Model,
   },
 
+  seeds(server) {
+    server.db.loadData({
+      transactions: [
+        {
+          id: 1,
+          title: 'Frella website',
+          amount: 6000,
+          description: 'Development website',
+          type: 'deposit',
+          category: 'development',
+          createdAt: new Date(),
+        },
+      ],
+    });
+  },
+
   routes() {
     this.namespace = 'api';
     this.get('/transactions', () => {
