@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+
+    div {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        h1 {
+            font-size: 100px;
+        }
+
+        img {
+            justify-content: center;
+        }
+    }
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    text-align: center;
+    height: 40px;
+    background-color: var(--gray-850);
+    border-radius: 40px;
+    cursor: pointer;
+
+    svg {
+        margin-right: 5px;
+    }
+
+    transition: filter 0.2s;
+
+    &:hover {
+        filter: brightness(0.8);
+    }
+}

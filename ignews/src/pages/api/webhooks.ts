@@ -75,7 +75,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                         throw new Error(`Unexpected event type: ${type}`);
                 }
             } catch (err) {
-                return res.json({ error: "Webhook handler falid" });
+                console.log(err); //Adiciona o erro
+                return res.status(400).json({ error: "Webhook handler falid" }); //ADiciona o status de erro
             }
         }
 
