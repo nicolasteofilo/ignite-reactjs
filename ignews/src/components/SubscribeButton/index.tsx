@@ -29,6 +29,7 @@ export function SubscribeButton({ priceId }: SubscribeButtonProps) {
             })
         } catch (error) {
             toast.error(error.message);
+            console.log(error);
         }
     }
 
