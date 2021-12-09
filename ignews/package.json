@@ -10,6 +10,8 @@
     "stripe": "stripe-cli/stripe.exe listen  --forward-to localhost:3000/api/webhooks"
   },
   "dependencies": {
+    "@prismicio/client": "^5.1.0",
+    "@prismicio/react": "^2.0.0",
     "@stripe/stripe-js": "^1.21.2",
     "axios": "^0.24.0",
     "faunadb": "^4.4.1",
