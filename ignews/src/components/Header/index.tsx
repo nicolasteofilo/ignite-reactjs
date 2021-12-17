@@ -1,26 +1,25 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
 import { SingInButton } from '../SingInButton';
+import styles from './styles.module.scss';
 import Link from 'next/link';
 
-import styles from './styles.module.scss';
-
 export function Header() {
-    function handleClickImageLogo() {
-        window.location.href = '/';
-    }
 
-    return (
-        <header className={styles.headerContainer} >
-            <div className={styles.headerContent} >
-                <Link href="/">
-                 <img src="/images/logo.svg" alt="ig.news" />
-                </Link>
-                <nav>
-                    <a className={styles.active} href="#">Home</a>
-                    <a href="/posts">Posts</a>
-                </nav>
-                <SingInButton />
-            </div>
-        </header>
-    )
+  return(
+    <header className={styles.headerContainer}>
+      <div className={styles.headerContent}>
+            <Link href="/">
+                <img src="/images/logo.svg" alt="ig.news"/>
+          </Link>
+        <nav>
+          <Link href="/">
+            <a className={styles.active}>Home</a>
+          </Link>
+          <Link href="/posts">
+            <a>Posts</a>
+          </Link>
+        </nav>
+        <SingInButton />
+      </div>
+    </header>
+  );
 }
