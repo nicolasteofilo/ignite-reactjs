@@ -60,8 +60,10 @@ export default function PostPreview({ post }: PostPreviewProps) {
 export const getStaticPaths: GetStaticPaths = async () => {
   // as paths é o caminho que eu quero que seja gerado durante a build do projeto
   return {
-    paths: [],
-    fallback: 'blocking',
+    paths: [
+      // { params: { slug: "como-renomear-varios-arquivos-de-uma-vez-usando-o-terminal" } },
+    ],
+    fallback: 'blocking', // 'true', 'false' , 'blocking'
   }
 }
 

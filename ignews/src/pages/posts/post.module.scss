@@ -27,9 +27,12 @@
     color: var(--gray-100);
 
     pre {
+      max-width: 100%;
+      word-break: break-word;
       background: var(--gray-700);
-      padding: 1rem;
+      padding: 0.5rem;
       border-radius: 4px;
+      // text-size-adjust: initial;
     }
     p, ul {
       margin: 1.5rem 0;
