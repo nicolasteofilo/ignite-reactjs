@@ -1,1 +1,46 @@
-// TODO
+.post {
+  a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 3rem;
+    strong {
+      display: block;
+      font-size: 1.641rem;
+      color: var(--heading);
+      font-weight: 700;
+      margin-bottom: 1rem;
+
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--highlight);
+      }
+    }
+
+    span {
+      color: var(--body);
+      font-weight:400;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+
+      li {
+        color: var(--info);
+        text-decoration: none;
+        list-style: none;
+      }
+
+      svg {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+.userIcon {
+  margin-left: 0.5rem
+}
