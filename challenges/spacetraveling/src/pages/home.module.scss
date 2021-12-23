@@ -44,3 +44,13 @@
 .userIcon {
   margin-left: 0.5rem
 }
+
+.buttonLoadMorePosts {
+  background: none;
+  color: var(--highlight);
+  font-weight: 600;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

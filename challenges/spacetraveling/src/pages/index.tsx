@@ -5,7 +5,7 @@ import Prismic from '@prismicio/client';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import Link from 'next/link';
-import { ReactElement, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getPrismicClient } from '../services/prismic';
 
 import styles from './home.module.scss';
@@ -32,33 +32,52 @@ interface HomeProps {
 
 export default function Home({ postsPagination }: HomeProps) {
   const [visibleButton, setVisibleButton] = useState(false);
-  console.log(postsPagination);
+  const [posts, setPosts] = useState<PostPagination>({
+    // pegando informações anteriores
+    ...postsPagination,
+    results: postsPagination.results.map(post => ({
+      ...post,
+      first_publication_date: format(
+        new Date(post.first_publication_date),
+        'dd MMM yyyy',
+        {
+          locale: ptBR,
+        }
+      ),
+    })),
+  });
+  // console.log(postsPagination);
 
   useEffect(() => {
     if (postsPagination.next_page) {
       setVisibleButton(true);
     }
   }, []);
+  // console.log(postsPagination.next_page);
+  async function loadMorePosts(): Promise<void> {
+    const response = await fetch(`${posts.next_page}`).then(data =>
+      data.json()
+    );
+
+    setPosts({
+      ...posts,
+      results: [...posts.results, ...response.results],
+      next_page: response.next_page,
+    });
+    console.log(response?.results);
+  }
 
   return (
     <main className={common.container}>
       <div className={styles.post}>
-        {postsPagination.results.map(post => (
+        {posts.results.map(post => (
           <Link href={`/post/${post.uid}`} key={post.uid}>
             <a>
               <strong>{post.data.title}</strong>
               <span>{post.data.subtitle}</span>
               <ul>
                 <FiCalendar color="#BBBBBB" />
-                <li>
-                  {format(
-                    new Date(post.first_publication_date),
-                    'dd MMM yyyy',
-                    {
-                      locale: ptBR,
-                    }
-                  )}
-                </li>
+                <li>{post.first_publication_date}</li>
                 <FiUser className={styles.userIcon} color="#BBBBBB" />
                 <li>{post.data.author}</li>
               </ul>
@@ -66,9 +85,15 @@ export default function Home({ postsPagination }: HomeProps) {
           </Link>
         ))}
       </div>
-      {visibleButton ? (
-        <button type="button">Carregar mais posts</button>
-      ) : null}
+      {posts.next_page && (
+        <button
+          className={styles.buttonLoadMorePosts}
+          type="button"
+          onClick={loadMorePosts}
+        >
+          Carregar mais posts
+        </button>
+      )}
     </main>
   );
 }
