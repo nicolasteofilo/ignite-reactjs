@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
           <script
             async
             defer
-            src="https://static.cdn.prismic.io/prismic.js?new=true&repo=spacetraveling2"
+            src="https://static.cdn.prismic.io/prismic.js?new=true&repo=s-pacetraveling"
           />
         </body>
       </Html>
