@@ -37,7 +37,7 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps): JSX.Element {
-  const totalWord = post.data.content.reduce((total, contentItem) => {
+  const totalWord = post?.data?.content.reduce((total, contentItem) => {
     // vai me retornar um array de strings
     total += contentItem.heading.split(' ').length;
     const words = contentItem.body.map(tem => tem.text.split(' ').length);
@@ -64,7 +64,7 @@ export default function Post({ post }: PostProps): JSX.Element {
   return (
     <>
       <Head>
-        <title>{post.data.title}</title>
+        <title>{post?.data?.title}</title>
       </Head>
       <img
         src={post?.data?.banner?.url || ''}
@@ -90,7 +90,7 @@ export default function Post({ post }: PostProps): JSX.Element {
               </li>
             </ul>
           </div>
-          {post.data.content.map(content => (
+          {post?.data?.content.map(content => (
             <article className={styles.postContent} key={content.heading}>
               <h2>{content.heading}</h2>
               <div
@@ -134,13 +134,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     uid: response.uid,
     first_publication_date: response.first_publication_date,
     data: {
-      title: response.data.title,
-      subtitle: response.data.subtitle,
-      author: response.data.author,
+      title: response?.data?.title,
+      subtitle: response?.data?.subtitle,
+      author: response?.data?.author,
       banner: {
-        url: response.data.banner.url,
+        url: response?.data?.banner.url,
       },
-      content: response.data.content.map(content => {
+      content: response?.data?.content.map(content => {
         return {
           heading: content.heading,
           body: [...content.body],
