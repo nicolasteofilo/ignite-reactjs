@@ -31,29 +31,15 @@ interface HomeProps {
 }
 
 export default function Home({ postsPagination }: HomeProps) {
-  const [visibleButton, setVisibleButton] = useState(false);
   const [posts, setPosts] = useState<PostPagination>({
     // pegando informações anteriores
     ...postsPagination,
     results: postsPagination.results.map(post => ({
       ...post,
-      first_publication_date: format(
-        new Date(post.first_publication_date),
-        'dd MMM yyyy',
-        {
-          locale: ptBR,
-        }
-      ),
+      first_publication_date: post.first_publication_date,
     })),
   });
-  // console.log(postsPagination);
 
-  useEffect(() => {
-    if (postsPagination.next_page) {
-      setVisibleButton(true);
-    }
-  }, []);
-  // console.log(postsPagination.next_page);
   async function loadMorePosts(): Promise<void> {
     const response = await fetch(`${posts.next_page}`).then(data =>
       data.json()
@@ -64,7 +50,6 @@ export default function Home({ postsPagination }: HomeProps) {
       results: [...posts.results, ...response.results],
       next_page: response.next_page,
     });
-    console.log(response?.results);
   }
 
   return (
@@ -77,7 +62,15 @@ export default function Home({ postsPagination }: HomeProps) {
               <span>{post.data.subtitle}</span>
               <ul>
                 <FiCalendar color="#BBBBBB" />
-                <li>{post.first_publication_date}</li>
+                <li>
+                  {format(
+                    new Date(post.first_publication_date),
+                    'dd MMM yyyy',
+                    {
+                      locale: ptBR,
+                    }
+                  )}
+                </li>
                 <FiUser className={styles.userIcon} color="#BBBBBB" />
                 <li>{post.data.author}</li>
               </ul>
