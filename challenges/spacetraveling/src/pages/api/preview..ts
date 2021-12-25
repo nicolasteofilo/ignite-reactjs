@@ -1,33 +1,34 @@
 /* eslint-disable consistent-return */
-import { Document } from '@prismicio/client/types/documents';
+/* eslint-disable no-use-before-define */
 import Prismic from '@prismicio/client';
+
+import { Document } from '@prismicio/client/types/documents';
+
+export const apiEndpoint = process.env.PRISMIC_API_ENDPOINT;
+export const accessToken = process.env.PRISMIC_ACESS_TOKEN;
 
 function linkResolver(doc: Document): string {
   if (doc.type === 'posts') {
-    return `/post/${doc.uid}`;
+    return `posts/${doc.uid}`;
   }
   return '/';
 }
 
-const apiEndpoint = process.env.PRISMIC_API_ENDPOINT;
-const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
-
 export const Client = (req = null) =>
-  // eslint-disable-next-line no-use-before-define
-  Prismic.client(apiEndpoint, createClientOptions(req, accessToken));
+  Prismic.client(apiEndpoint, createClientOption(req, accessToken));
 
-const createClientOptions = (req = null, prismicAccessToken = null) => {
+const createClientOption = (req = null, prismicAccessToken = null) => {
   const reqOption = req ? { req } : {};
-  const accessTokenOption = prismicAccessToken
+  const acessTokenOption = prismicAccessToken
     ? { accessToken: prismicAccessToken }
     : {};
+
   return {
     ...reqOption,
-    ...accessTokenOption,
+    ...acessTokenOption,
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const Preview = async (req, res) => {
   const { token: ref, documentId } = req.query;
   const redirectUrl = await Client(req)

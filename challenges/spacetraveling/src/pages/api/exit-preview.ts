@@ -1,15 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import url from 'url';
+import { NextApiResponse } from 'next';
 
-async function exit(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+async function exit(_, res: NextApiResponse): Promise<void> {
   // Exit the current user from "Preview Mode". This function accepts no args.
   res.clearPreviewData();
 
-  const queryObject = url.parse(req.url, true).query;
-  const redirectUrl =
-    queryObject && queryObject.currentUrl ? queryObject.currentUrl : '/';
-
-  res.writeHead(307, { Location: redirectUrl });
+  res.writeHead(307, { Location: '/' });
   res.end();
 }
 
