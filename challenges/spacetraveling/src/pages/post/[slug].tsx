@@ -10,9 +10,9 @@ import { ptBR } from 'date-fns/locale';
 import { FiCalendar, FiClock, FiUser } from 'react-icons/fi';
 import { RichText } from 'prismic-dom';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { getPrismicClient } from '../../services/prismic';
 
-import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 
 interface Post {
@@ -34,9 +34,10 @@ interface Post {
 
 interface PostProps {
   post: Post;
+  preview: boolean;
 }
 
-export default function Post({ post }: PostProps): JSX.Element {
+export default function Post({ post, preview }: PostProps): JSX.Element {
   const totalWord = post?.data?.content.reduce((total, contentItem) => {
     // vai me retornar um array de strings
     total += contentItem.heading.split(' ').length;
@@ -100,6 +101,13 @@ export default function Post({ post }: PostProps): JSX.Element {
               />
             </article>
           ))}
+          {preview && (
+            <aside>
+              <Link href="/api/exit-preview">
+                <a className={styles.buttonExitPreview}>Sair do modo Preview</a>
+              </Link>
+            </aside>
+          )}
         </div>
       </div>
     </>
