@@ -1,5 +1,5 @@
-import { Flex, Text, Input, Icon } from '@chakra-ui/react';
-import { RiSearchLine } from 'react-icons/ri';
+import { Flex, Text, Input, Icon, HStack, Box, Image, Avatar } from '@chakra-ui/react';
+import { RiSearchLine, RiNotificationLine, RiUserAddLine } from 'react-icons/ri';
 
 interface HeaderProps {
 }
@@ -50,6 +50,32 @@ export default function Header({}: HeaderProps) {
           }}
         />
         <Icon as={RiSearchLine} fontSize="20" />
+      </Flex>
+
+      <Flex
+        align="center"
+        ml="auto"
+      >
+        <HStack
+          spacing="8"
+          mx="4"
+          pr="8"
+          py="1"
+          color="gray.300"
+          borderRightWidth={1}
+          borderColor="gray.700"
+        >
+          <Icon as={RiNotificationLine} fontSize="20" />
+          <Icon as={RiUserAddLine} fontSize="20" />
+        </HStack>
+
+        <Flex align="center">
+          <Box mr="4" textAlign="right">
+            <Text>Nicolas Teófilo</Text>
+            <Text color="gray.300" fontSize="small" >nicolas@email.com.br</Text>
+          </Box>
+          <Avatar size="md" name="Nicolas Teófilo" src="https://github.com/nicolasteofilo.png" />
+        </Flex>
       </Flex>
     </Flex>
   )
