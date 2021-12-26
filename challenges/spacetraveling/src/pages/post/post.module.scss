@@ -79,3 +79,45 @@
     opacity: 0.9;
   }
 }
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border) ;
+
+  h3 {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--heading);
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    color: var(--highlight);
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  div {
+    margin-top: 3rem;
+  }
+
+  div + div {
+    text-align: right;
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+  }
+
+  .editionDate {
+    display: block;
+    color: var(--info);
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
