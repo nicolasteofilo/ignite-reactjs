@@ -4,7 +4,7 @@ import { RiSearchLine, RiNotificationLine, RiUserAddLine } from 'react-icons/ri'
 interface HeaderProps {
 }
 
-export default function Header({}: HeaderProps) {
+export function Header({}: HeaderProps) {
   return (
     <Flex
       as="header"

@@ -1,6 +1,6 @@
 import { Box, Button, HStack, Stack } from "@chakra-ui/react";
 
-export default function Pagination() {
+export function Pagination() {
   return (
     <Stack
       direction="row"
