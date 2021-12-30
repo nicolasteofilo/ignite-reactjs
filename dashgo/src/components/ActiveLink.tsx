@@ -12,11 +12,19 @@ export function ActiveLink({
   shouldMatchExactHref = false,
   ...rest}: ActiveLinkProps) {
   const { asPath } = useRouter()
+
   let isActive = false;
 
   if(asPath === rest.href || asPath === rest.as) {
     isActive = true;
   }
+
+  // se o asPath começa com o href
+  if(!shouldMatchExactHref &&
+    (asPath.startsWith(String(rest.href)) ||
+      asPath.startsWith(String(rest.as))))  {
+        isActive = true;
+    }
 
   return (
     <Link {...rest}>
