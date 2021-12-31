@@ -5,6 +5,7 @@ import { Input } from "../components/Form/Input";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";   
+import { useRouter } from "next/router";
 
 
 type SingInFormData = {
@@ -18,12 +19,16 @@ const singInFormShema = yup.object().shape({
 });
 
 export default function SingIn() {
+  const router = useRouter();
+
+
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: yupResolver(singInFormShema),
   });
 
   const handleSingIn: SubmitHandler<SingInFormData> = async (values) => {
-    console.log(values);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    router.push('/dashboard');
   };
   useEffect(() => {
     console.log(errors);
