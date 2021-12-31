@@ -30,10 +30,6 @@ export default function SingIn() {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     router.push('/dashboard');
   };
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
-
 
   return (
     <Flex w="100vw" h="100vh" alignItems="center" justifyContent="center">

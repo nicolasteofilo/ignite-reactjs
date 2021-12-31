@@ -53,7 +53,6 @@ export default function CreateUser() {
     values
   ) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
-    console.log(values);
   };
 
   return (
