@@ -5,6 +5,8 @@ import { IProduct } from '../store/modules/cart/types';
 const Catalog: React.FC = () => {
   const [catalog, setCatalog] = useState<IProduct[]>([]);
 
+  console.log(catalog);
+
   useEffect(() => {
     api.get('products').then(response => {
       setCatalog(response.data);
