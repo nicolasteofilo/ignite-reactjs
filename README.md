@@ -1,6 +1,6 @@
-# Untitled
+# Ignite React.js
 
-![Untitled](Untitled%20db708ef290e64c119f8e328df725931a/Untitled.png)
+![Untitled](/Untitled.png)
 
 Este repóstiorio é dedicado aos estudos da Trilha de React do bootcamp da @rocketseat .
 
@@ -10,17 +10,22 @@ Este repóstiorio é dedicado aos estudos da Trilha de React do bootcamp da @roc
 
 Projetos
 
-- Dt-Money
-- Ignews
-- Dashgo
+- [Dt-Money](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/dt-money)
+- [Ignews](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/ignews)
+- [Dashgo](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/dashgo)
 
 Desafios
 
-- goRestaurant
-- Carrinho de compras
-- spacetraveling
-- todo-list
-- what-me
-- wordtrip
+- [goRestaurant](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/challenges/goRestaurant)
+- [Carrinho de compras](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/challenges/hook%20de%20carrinho%20de%20compras)
+- [spacetraveling](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/challenges/spacetraveling)
+- [todo-list](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/challenges/todo-list)
+- [what-me](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/challenges/what-me)
+- [wordtrip](https://github.com/nicolasteofilo/Ignite-ReactJs/tree/main/challenges/wordtrip)
 
-Autor
+---
+
+## Autor
+<img src="https://avatars.githubusercontent.com/u/81480818?v=4" width="60px" height="60px" style="border-radius:50%">
+
+[Nicolas Teófilo](https://github.conm/nicolasteofilo)
