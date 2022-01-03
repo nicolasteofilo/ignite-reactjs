@@ -8,7 +8,12 @@ interface ItemProps {
 
 export function Item({ name, pathIcon, width }: ItemProps) {
   return (
-    <Flex direction="column" alignItems="center" justifyContent="center" px={16}>
+    <Flex
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      px={16}
+    >
       <Box w="100" h="20">
         <Image src={`${pathIcon}`} alt={name} w={width} />
       </Box>
