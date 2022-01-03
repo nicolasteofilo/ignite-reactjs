@@ -1,4 +1,4 @@
-import { IProduct } from "./types";
+import { ICartItem, IProduct } from "./types";
 
 // Actions
 export function addProductToCart(product: IProduct) {
@@ -7,3 +7,12 @@ export function addProductToCart(product: IProduct) {
     payload: { product },
   };
 }
+
+export function removeProductToCart(item: ICartItem, index: number) {
+  const payload = { item, index };
+  return {
+    type: "REMOVE_PRODUCT_TO_CART",
+    payload,
+  };
+}
+

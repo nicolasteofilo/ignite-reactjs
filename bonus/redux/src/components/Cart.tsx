@@ -1,10 +1,27 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IState } from "../store";
-import { ICartItem, IProduct } from "../store/modules/cart/types";
+import { ICartItem } from "../store/modules/cart/types";
+
+import { CgRemove } from "react-icons/cg";
+import { removeProductToCart } from "../store/modules/cart/actions";
+import { useCallback } from "react";
 
 export function Cart() {
   const cart = useSelector<IState, ICartItem[]>((state) => state.cart.items);
-  console.log(cart);
+  const dispatch = useDispatch();
+
+  const style = {
+    border: "none",
+    fontSize: "1.2rem",
+    cursor: "pointer",
+  };
+
+  const handleRemoveProductToCart = useCallback(
+    (item, index) => {
+      dispatch(removeProductToCart(item, index));
+    },
+    [dispatch]
+  );
 
   return (
     <table>
@@ -17,7 +34,7 @@ export function Cart() {
         </tr>
       </thead>
       <tbody>
-        {cart.map((item) => (
+        {cart.map((item, index) => (
           <tr key={item.product.id}>
             <td>{item.product.title}</td>
             <td>{new Intl.NumberFormat().format(item.product.price)}</td>
@@ -27,6 +44,15 @@ export function Cart() {
                 style: "currency",
                 currency: "BRL",
               }).format(item.product.price * item.quantity)}
+            </td>
+            <td>
+              <button
+                onClick={() => handleRemoveProductToCart(item, index)}
+                style={style}
+                type="button"
+              >
+                <CgRemove size={20} />
+              </button>
             </td>
           </tr>
         ))}

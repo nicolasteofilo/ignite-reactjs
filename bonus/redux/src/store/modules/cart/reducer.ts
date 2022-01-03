@@ -12,8 +12,8 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
       case "ADD_PRODUCT_TO_CART": {
         const { product } = action.payload;
 
-        const productIndex = draft.items.findIndex(item => 
-          item.product.id === product.id,
+        const productIndex = draft.items.findIndex(
+          (item) => item.product.id === product.id
         );
 
         if (productIndex >= 0) {
@@ -22,6 +22,16 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
           draft.items.push({ product, quantity: 1 });
         }
 
+        break;
+      }
+      case "REMOVE_PRODUCT_TO_CART": {
+        const { index, item } = action.payload;
+        console.log(item, index);
+        if (item.quantity > 1) {
+          draft.items[index].quantity -= 1;
+          return;
+        }
+        draft.items.splice(index, 1);
         break;
       }
       default: {
