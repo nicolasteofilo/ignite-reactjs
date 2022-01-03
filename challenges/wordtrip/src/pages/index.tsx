@@ -28,7 +28,7 @@ export default function Home({ continents }: HomeProps) {
         <Heading mt="8" fontSize="2xl" fontWeight="medium">Vamos nessa?</Heading>
         <Heading mt="5" fontSize="2xl" fontWeight="medium">Então escolha seu continente</Heading>
       </Flex>
-      <Slider continents={continents} />
+      <Slider />
     </>
   );
 }
