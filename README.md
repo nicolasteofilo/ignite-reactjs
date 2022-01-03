@@ -26,4 +26,4 @@ Desafios
 ---
 
 ## Autor
-<a styles="border-radius:50%" href="https://github.conm/nicolasteofilo"><img src="https://avatars.githubusercontent.com/u/81480818?v=4" height="auto" width="100" style="border-radius:50%"></a>
+<a styles="border-radius:50%" href="https://github.com/nicolasteofilo"><img src="https://avatars.githubusercontent.com/u/81480818?v=4" height="auto" width="100" style="border-radius:50%"></a>
