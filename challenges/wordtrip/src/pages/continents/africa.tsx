@@ -13,6 +13,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { RiInformationLine } from "react-icons/ri";
+import City from "../../components/City";
 
 export default function europe() {
   return (
@@ -136,6 +137,32 @@ export default function europe() {
             </Flex>
           </Grid>
         </Flex>
+      </Box>
+      <Box maxW="1160px" mx="auto" mb="10" px="1rem">
+      <Heading fontWeight="500" fontSize={["2xl","4xl"]} mb="10">Cidades +100</Heading>
+      <Grid templateColumns={["1fr","1fr 1fr", "repeat(3, 1fr)", "repeat(4, 1fr)"]} gap={['20px','45px']} alignItems="center" justifyContent="center" px={["30px", "0"]}>
+          <City
+            name="Marrakesh"
+            country="Morocco"
+            image="https://images.prismic.io/worldtripcms/f3482f8a-eab5-4fcd-829b-e539c882c832_annie-spratt-q8Dl7K6PyYM-unsplash.jpg?auto=compress,format"
+            flag="https://images.prismic.io/worldtripcms/42517340-00a2-40b5-9d00-6bcccf4de83e_3df17a4b4e7ca4f88f831df6fc95d2eb.jpg?auto=compress,format"
+            key="Marrakesh"
+          />
+          <City
+            name="Luxor"
+            country="Egypt"
+            image="https://images.prismic.io/worldtripcms/5d2198fd-5420-45fa-8db8-a743d7c26abb_calin-stan-a8ZSKCBE1xk-unsplash.jpg?auto=compress,format"
+            flag="https://images.prismic.io/worldtripcms/73f4db47-048d-40e7-be29-ada4e9fd9c16_1280px-Flag_of_Egypt.svg.png?auto=compress,format"
+            key="Marrakesh"
+          />
+          <City
+            name="Beirut"
+            country="Lebanon"
+            image="https://images.prismic.io/worldtripcms/f3482f8a-eab5-4fcd-829b-e539c882c832_annie-spratt-q8Dl7K6PyYM-unsplash.jpg?auto=compress,format"
+            flag="https://images.prismic.io/worldtripcms/cbcfd614-78ad-4e1d-8919-0b0d7f568d38_lg_flag_LB.gif?auto=compress,format"
+            key="Beirut"
+          />
+      </Grid>
       </Box>
     </>
   );
