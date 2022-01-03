@@ -26,6 +26,4 @@ Desafios
 ---
 
 ## Autor
-<img src="https://avatars.githubusercontent.com/u/81480818?v=4" width="60px" height="60px" style="border-radius:50%">
-
-[Nicolas Teófilo](https://github.conm/nicolasteofilo)
+<a styles="border-radius:50%" href="https://github.conm/nicolasteofilo"><img src="https://avatars.githubusercontent.com/u/81480818?v=4" height="auto" width="100" style="border-radius:50%"></a>
