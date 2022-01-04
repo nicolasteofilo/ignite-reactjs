@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import { darken } from 'polished'
+import { darken } from "polished";
 
 export const ProductList = styled.ul`
   display: grid;
@@ -41,7 +41,7 @@ export const ProductList = styled.ul`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.06, '#7159c1')};
+        background: ${darken(0.06, "#7159c1")};
       }
 
       div {
@@ -62,4 +62,45 @@ export const ProductList = styled.ul`
       }
     }
   }
+`;
+
+export const Title = styled.strong`
+  font-size: 16px;
+  line-height: 20px;
+  color: #333;
+  margin-top: 5px;
+`;
+
+export const BuyButton = styled.button`
+  background: #7159c1;
+  cursor: pointer;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: auto;
+  width: 20%;
+  height: 30px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+
+  &:hover {
+    background: ${darken(0.06, "#7159c1")};
+  }
+`;
+
+export const Price = styled.span`
+  font-size: 21px;
+  font-weight: bold;
+  margin: 5px 0 20px;
+`;
+
+export const ListItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 4px;
 `;

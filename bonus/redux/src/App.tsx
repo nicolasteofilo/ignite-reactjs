@@ -1,17 +1,16 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { Home } from './pages/Home';
-import store from './store';
+import { Provider } from "react-redux";
+import { Cart } from "./components/Cart";
+import { Catalog } from "./components/Catalog";
 
-import { GlobalStyle } from "./styles/global";
+import { store } from "./store";
 
-function App() {
+import '../src/styles/global.css'
+
+export function App() {
   return (
-    <Provider store={store} >
-      <Home />
-      <GlobalStyle />
+    <Provider store={store}>
+      <Catalog />
+      <Cart />
     </Provider>
   );
 }
-
-export default App;

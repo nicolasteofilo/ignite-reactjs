@@ -1,26 +1,28 @@
-import { ICartItem, IProduct } from "./types";
+import { ActionTypes, IProduct } from "./types";
 
-// Actions
-export function addProductToCart(product: IProduct) {
+export function addProductToCartRequest(product: IProduct) {
   return {
-    type: "ADD_PRODUCT_TO_CART",
-    payload: { product },
+    type: ActionTypes.addProductToCartResquest,
+    payload: {
+      product
+    }
   };
 }
 
-export function removeProductToCart(item: ICartItem, index: number) {
-  const payload = { item, index };
+export function addProductToCartSuccess(product: IProduct) {
   return {
-    type: "REMOVE_PRODUCT_TO_CART",
-    payload,
+    type: ActionTypes.addProductToCartSuccess,
+    payload: {
+      product
+    }
   };
 }
 
-export function removeOneQuantityInItem(item: ICartItem, index: number) {
-  const payload = { item, index };
+export function addProductToCartFailure(productId: number) {
   return {
-    type: "REMOVE_ONE_QUANTITY_IN_ITEM",
-    payload,
+    type: ActionTypes.addProductToCartFailure,
+    payload: {
+      productId
+    }
   };
 }
-

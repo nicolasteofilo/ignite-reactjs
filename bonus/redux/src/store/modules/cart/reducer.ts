@@ -1,44 +1,38 @@
 import { Reducer } from "redux";
 import produce from "immer";
-import { ICartState } from "./types";
+import { ActionTypes, ICartState } from "./types";
 
 const INITIAL_STATE: ICartState = {
   items: [],
+  failedStockCheck: []
 };
 
-const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
-  return produce(state, (draft) => {
+export const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
+  return produce(state, draft => {
     switch (action.type) {
-      case "ADD_PRODUCT_TO_CART": {
+      case ActionTypes.addProductToCartSuccess:
         const { product } = action.payload;
 
-        const productIndex = draft.items.findIndex(
-          (item) => item.product.id === product.id
+        const productInCartIndex = draft.items.findIndex(
+          item => item.product.id === product.id
         );
 
-        if (productIndex >= 0) {
-          draft.items[productIndex].quantity += 1;
+        if (productInCartIndex >= 0) {
+          draft.items[productInCartIndex].quantity++;
         } else {
-          draft.items.push({ product, quantity: 1 });
+          draft.items.push({
+            product,
+            quantity: 1
+          });
         }
 
         break;
-      }
-      case "REMOVE_PRODUCT_TO_CART": {
-        const { index } = action.payload;
-        draft.items.splice(index, 1);
+      case ActionTypes.addProductToCartFailure:
+        draft.failedStockCheck.push(action.payload.productId);
+
         break;
-      }
-      case "REMOVE_ONE_QUANTITY_IN_ITEM": {
-        const { index } = action.payload;
-        draft.items[index].quantity -= 1;
-        break;
-      }
-      default: {
+      default:
         return draft;
-      }
     }
   });
 };
-
-export default cart;
