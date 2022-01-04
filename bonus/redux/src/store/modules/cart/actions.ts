@@ -16,3 +16,11 @@ export function removeProductToCart(item: ICartItem, index: number) {
   };
 }
 
+export function removeOneQuantityInItem(item: ICartItem, index: number) {
+  const payload = { item, index };
+  return {
+    type: "REMOVE_ONE_QUANTITY_IN_ITEM",
+    payload,
+  };
+}
+

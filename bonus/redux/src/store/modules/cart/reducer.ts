@@ -25,13 +25,13 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
         break;
       }
       case "REMOVE_PRODUCT_TO_CART": {
-        const { index, item } = action.payload;
-        console.log(item, index);
-        if (item.quantity > 1) {
-          draft.items[index].quantity -= 1;
-          return;
-        }
+        const { index } = action.payload;
         draft.items.splice(index, 1);
+        break;
+      }
+      case "REMOVE_ONE_QUANTITY_IN_ITEM": {
+        const { index } = action.payload;
+        draft.items[index].quantity -= 1;
         break;
       }
       default: {
