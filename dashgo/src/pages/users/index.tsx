@@ -15,6 +15,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { useEffect } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
 import Header from "../../components/Header";
@@ -33,6 +34,12 @@ export default function UserList() {
     month: "short",
     day: "numeric",
   }).format(date);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/users")
+    .then(res => res.json())
+    .then(data => console.log(data))
+  })
 
   return (
     <Box>
