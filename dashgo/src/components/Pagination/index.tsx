@@ -64,7 +64,7 @@ export function Pagination({
         {/* Fist Pages */}
         {currentPage > 1 + siblingsCount && (
           <>
-            <PaginationItem number={1} />
+            <PaginationItem onPageChange={onPageChange} number={1} />
             {currentPage > 2 + siblingsCount && (
               <Text
                 color="gray.300"
@@ -77,14 +77,14 @@ export function Pagination({
         {/* Previuos Page */}
         {previousPages.length > 0 &&
           previousPages.map((page) => {
-            return <PaginationItem key={page} number={page} />;
+            return <PaginationItem onPageChange={onPageChange} key={page} number={page} />;
           })}
-        <PaginationItem number={currentPage} isCurrent={true} />{" "}
+        <PaginationItem onPageChange={onPageChange} number={currentPage} isCurrent={true} />{" "}
         {/* current page */}
         {/* Next Pages */}
         {nextPages.length > 0 &&
           nextPages.map((page) => {
-            return <PaginationItem key={page} number={page} />;
+            return <PaginationItem onPageChange={onPageChange} key={page} number={page} />;
           })}
         {currentPage + siblingsCount < lastPage && (
           <>
@@ -95,7 +95,7 @@ export function Pagination({
                 textAlign="center"
               >...</Text>
             )}
-            <PaginationItem number={lastPage} />
+            <PaginationItem onPageChange={onPageChange} number={lastPage} />
           </>
         )}
       </HStack>

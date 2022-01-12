@@ -8,12 +8,12 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { SidebarDrawerProvider } from '../context/SidebarDrawerContext';
 
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { queryClient } from '../services/queryClient';
 
 if (process.env.NODE_ENV === 'development') {
   makeServer();
 }
 
-const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
