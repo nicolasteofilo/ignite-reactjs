@@ -18,33 +18,41 @@ import {
   Link,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { useEffect } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
 import Header from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
-import Sidebar from "../../components/Sidebar";
+import { Sidebar } from "../../components/Sidebar";
 import { useUsers } from "../../hooks/useUsers";
-import { queryClient } from "../../services/queryClient";
 import { api } from "../../services/api";
+import { getUsers } from '../../hooks/useUsers';
 
-export default function UserList() {
+import { queryClient } from "../../services/queryClient";
+import { GetServerSideProps } from "next";
+
+export default function UserList({ users }) {
   const [page, setPage] = useState(1);
   console.log(page);
-  const { data, isLoading, isFetching, error } = useUsers(page);
+  const { data, isLoading, isFetching, error } = useUsers(page, {
+    initialData: users,
+  });
 
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   });
 
-  async function handlePrefecthUser(userId) {
-    await queryClient.prefetchQuery(['user', userId], async () => {
-      const response = await api.get(`users/${userId}`);
-      return response.data;
-    }, {
-      staleTime: 1000 * 60 * 10 , // 10 minutes
-    });
+  async function handlePrefecthUser(userId: string) {
+    await queryClient.prefetchQuery(
+      ["user", userId],
+      async () => {
+        const response = await api.get(`users/${userId}`);
+        return response.data;
+      },
+      {
+        staleTime: 1000 * 60 * 10, // 10 minutes
+      }
+    );
   }
 
   return (
@@ -110,8 +118,8 @@ export default function UserList() {
                           <Box>
                             <Link
                               textDecoration="none"
-                              style={{ textDecoration: 'none' }}
-                              _hover={{ color: 'pink.400' }}
+                              style={{ textDecoration: "none" }}
+                              _hover={{ color: "pink.400" }}
                               onMouseEnter={() => handlePrefecthUser(user.id)}
                             >
                               <Text fontWeight="bold">{user.name}</Text>
@@ -157,4 +165,14 @@ export default function UserList() {
       </Flex>
     </Box>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { totalCount, users } = await getUsers(1)
+  return {
+    props: {
+      users,
+      totalCount
+    },
+  }
 }
