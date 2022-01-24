@@ -1,7 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Router from "next/router";
 import { toast } from "react-toastify";
-import { setCookie } from "nookies";
+import { setCookie, parseCookies } from "nookies";
 
 import { api } from "../../services/api";
 
@@ -12,13 +12,28 @@ import {
   User,
 } from "./types";
 
-// contexto
+
 const AuthContext = createContext({} as AuthContextData);
 
-// pegar o provider do contexto
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>();
   const isAuthenticated = user ? true : false;
+
+  useEffect(() => {
+    const cookies = parseCookies();
+    if (cookies["@nexauth.refreshToken"]) {
+      api
+        .get("/me")
+        .then((response) => {
+          const { email, permissions, roles } = response.data;
+
+          setUser({ email, permissions, roles });
+        })
+        .catch((err) => {
+          toast.error("Não foi possível carregar o usuário");
+        });
+    }
+  }, []);
 
   async function singIn({ email, password }: SingInCredentials) {
     try {
@@ -43,6 +58,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         permissions,
         roles,
       });
+
+      api.defaults.headers['Authorization'] = `Bearer ${token}`;
 
       Router.push("/dashboard");
     } catch (error) {
