@@ -1,8 +1,16 @@
 import { createContext, useContext, useState } from "react";
-import Router from 'next/router'
+import Router from "next/router";
 import { toast } from "react-toastify";
+import { setCookie } from "nookies";
+
 import { api } from "../../services/api";
-import { AuthContextData, AuthProviderProps, SingInCredentials, User } from './types'
+
+import {
+  AuthContextData,
+  AuthProviderProps,
+  SingInCredentials,
+  User,
+} from "./types";
 
 // contexto
 const AuthContext = createContext({} as AuthContextData);
@@ -19,7 +27,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
         password,
       });
 
-      const { permissions, roles } = response.data;
+      const { permissions, roles, token, refreshToken } = response.data;
+
+      setCookie(undefined, "@nexauth.token", token, {
+        maxAge: 60 * 60 * 24 * 30, // 30 dias
+        path: "/",
+      });
+      setCookie(undefined, "@nexauth.refreshToken", refreshToken, {
+        maxAge: 60 * 60 * 24 * 30, // 30 dias
+        path: "/",
+      });
 
       setUser({
         email,
