@@ -1,4 +1,6 @@
 import { createContext, ReactNode, useContext } from "react";
+import { toast } from "react-toastify";
+import { api } from "../services/api";
 
 // infos do úsuario
 type SingInCredentials = {
@@ -25,7 +27,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const isAuthenticated = false;
 
   async function singIn({ email, password }: SingInCredentials) {
-    console.log(email, password);
+    try {
+      const response = await api.post("sessions", {
+        email,
+        password,
+      });
+
+      console.log(response.data);
+    } catch (error) {
+        toast.error("Falha na autenticação, verifique seus dados");
+    }
   }
 
   return (
