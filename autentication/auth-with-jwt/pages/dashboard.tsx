@@ -22,7 +22,7 @@ export default function Dashboard() {
     <BiExit onClick={signOut} />
 
     <Can permissions={['metrics.list']}>
-      <h2>Metrics</h2> 
+      <h2>Hooks de permisão</h2> 
     </Can>
     </>
   )
