@@ -39,7 +39,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         const { email, permissions, roles } = response.data
 
         setUser({ email, permissions, roles })
-      }).catch(err => {
+      }).catch(() => {
         destroyCookie(undefined, '@nextauth.token')
         destroyCookie(undefined, '@nextauth.refreshToken')
 

@@ -66,8 +66,9 @@ api.interceptors.response.use(response => {
         })
       });
     } else {
-      destroyCookie(undefined, '@nextauth.token')
-      destroyCookie(undefined, '@nextauth.refreshToken')
+      // se for um erro qualquer que não seja o token expirado, mas seja de autorização,
+      destroyCookie(undefined, 'nextauth.refreshToken')
+      destroyCookie(undefined, 'nextauth.token')
 
       Router.push('/');
     }
