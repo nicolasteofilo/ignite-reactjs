@@ -1,16 +1,13 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { AuthProvider } from "../context/AuthContext";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { AuthProvider } from '../contexts/AuthContext'
 
-function MyApp({ Component, pageProps }: AppProps) {
+import '../styles/globals.css'
+
+function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
       <Component {...pageProps} />
-      <ToastContainer />
     </AuthProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
