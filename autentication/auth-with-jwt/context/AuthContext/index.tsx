@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { setCookie, parseCookies } from 'nookies' 
+import { setCookie, parseCookies, destroyCookie } from 'nookies' 
 import Router from 'next/router'
 import { api } from "../../services/api";
 
@@ -39,6 +39,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
         const { email, permissions, roles } = response.data
 
         setUser({ email, permissions, roles })
+      }).catch(err => {
+        destroyCookie(undefined, '@nextauth.token')
+        destroyCookie(undefined, '@nextauth.refreshToken')
+
+        Router.push('/');
       })
     }
   }, [])
