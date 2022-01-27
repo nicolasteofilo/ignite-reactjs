@@ -6,14 +6,10 @@ import { api } from "../services/apiClient";
 import { withSSRAuth } from "../utils/withSSRAuth"
 
 import { BiExit } from "react-icons/bi";
+import { Can } from "../components/Can";
 
 export default function Dashboard() {
   const { user, } = useContext(AuthContext);
-
-  const userCanSeeMetrics = useCan({
-    permissions: ['metrics.list'],
-
-  })
 
   useEffect(() => {
     api.get('/me')
@@ -25,8 +21,9 @@ export default function Dashboard() {
     <h1>Dashboard: {user?.email}</h1>
     <BiExit onClick={signOut} />
 
-    
-    {userCanSeeMetrics && <h2>Metrics</h2>}
+    <Can permissions={['metrics.list']}>
+      <h2>Metrics</h2> 
+    </Can>
     </>
   )
 }
