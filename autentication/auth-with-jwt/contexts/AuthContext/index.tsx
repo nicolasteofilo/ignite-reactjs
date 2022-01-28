@@ -12,7 +12,7 @@ import {
 
 export const AuthContext = createContext({} as AuthContextData);
 
-let authCannel: BroadcastChannel;
+let authChannel: BroadcastChannel;
 
 export function signOut() {
   destroyCookie(undefined, "nextauth.token");
@@ -20,7 +20,7 @@ export function signOut() {
 
   console.log("signOut");
 
-  authCannel.postMessage("signOut");
+  authChannel.postMessage("signOut");
 
   Router.push("/");
 }
@@ -30,18 +30,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const isAuthenticated = !!user;
 
   useEffect(() => {
-    authCannel = new BroadcastChannel("auth");
+    authChannel = new BroadcastChannel("auth");
 
-    authCannel.onmessage = (event) => {
+    authChannel.onmessage = (event) => {
       switch (event.data) {
         case "signOut":
           signOut();
+          authChannel.close(); // Adiciona essa linha depois do signOut
           break;
         default:
           break;
       }
     };
-  });
+  }, []);
 
   useEffect(() => {
     const { "nextauth.token": token } = parseCookies();
@@ -88,7 +89,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
       Router.push("/dashboard");
-      authCannel.postMessage("signIn");
+      authChannel.postMessage("signIn");
     } catch (err) {
       console.log(err);
     }
