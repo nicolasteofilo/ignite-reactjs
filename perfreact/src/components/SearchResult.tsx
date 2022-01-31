@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { List, ListRowRenderer } from "react-virtualized";
 import { ProductItem } from "./ProductItem";
 
 type Product = {
@@ -19,11 +20,28 @@ function SearchResult({
   totalPrice,
   addToWishList,
 }: SearchResultProps) {
+  const rowRenderer: ListRowRenderer = ({ index, key, style }) => {
+    return (
+      <div key={key} style={style}>
+        <ProductItem addToWishList={addToWishList} product={results[index]} />
+      </div>
+    );
+  };
+
   return (
     <div>
       {totalPrice > 0 && <h2>{totalPrice}</h2>}
 
-      {results.map((product) => {
+      <List
+        height={300}
+        rowHeight={30}
+        width={900}
+        overscanRowCount={5}
+        rowCount={results.length}
+        rowRenderer={rowRenderer}
+      />
+
+      {/* {results.map((product) => {
         return (
           <ProductItem
             addToWishList={addToWishList}
@@ -31,7 +49,7 @@ function SearchResult({
             key={product.id}
           />
         );
-      })}
+      })} */}
     </div>
   );
 }
