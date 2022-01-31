@@ -9,10 +9,10 @@ type Product = {
 
 interface SearchResultProps {
   results: Product[];
+  addToWishList: any;
 }
 
-function SearchResult({ results }: SearchResultProps) {
-  // com o useMemo, eu só vou evetuar novamente esse calculo se os result mudarem, então funciona mais o menos como o useEfect
+function SearchResult({ results, addToWishList }: SearchResultProps) {
   const totalPrices = useMemo(() => {
     return results.reduce((acc, product) => {
       return acc + product.price;
@@ -29,7 +29,7 @@ function SearchResult({ results }: SearchResultProps) {
       </h2>
 
       {results.map((product) => {
-        return <ProductItem product={product} key={product.id} />;
+        return <ProductItem addToWishList={addToWishList} product={product} key={product.id} />;
       })}
     </div>
   );
