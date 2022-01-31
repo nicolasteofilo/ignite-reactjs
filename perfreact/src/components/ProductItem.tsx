@@ -3,6 +3,7 @@ import { AddProdductWishList } from './AddProdductWishList'
 import dynamic from "next/dynamic";
 import { BsBookmarkStar } from "react-icons/bs";
 // import AddProdductWishList from "./AddProdductWishList";
+import lodash from 'lodash';
 
 const AddProdductWishList = dynamic<AddProdductWishList>(() => {
   return import("./AddProdductWishList").then(mod => mod.AddProdductWishList);
@@ -47,7 +48,7 @@ export const ProductItem = memo(
   (prevProps, nextProps) => {
     // Object.is vai comparar o objeto anteriro com o proximo
     // se tiver  informações diverentes ele renderiza novamente o componente
-    return Object.is(prevProps.product, nextProps.product);
+    return lodash.isEqual(prevProps.product, nextProps.product);
   }
 );
 
