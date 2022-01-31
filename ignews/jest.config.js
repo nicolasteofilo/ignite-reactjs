@@ -9,4 +9,8 @@ module.exports = {
   },
   // indica que ambiente os testes estão executando, no caso a DOM( arvore de elementos HTML )
   testEnvironment: 'jsdom',
+
+  moduleNameMapper: {
+    "\\.(scss|css|sass)$": "identity-obj-proxy"
+  }
 };
