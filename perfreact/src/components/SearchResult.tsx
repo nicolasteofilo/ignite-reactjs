@@ -4,32 +4,33 @@ import { ProductItem } from "./ProductItem";
 type Product = {
   id: number;
   price: number;
+  priceFormatted: string | number;
   title: string;
 };
 
 interface SearchResultProps {
   results: Product[];
-  addToWishList: any;
+  totalPrice: number;
+  addToWishList: (id: number) => void;
 }
 
-function SearchResult({ results, addToWishList }: SearchResultProps) {
-  const totalPrices = useMemo(() => {
-    return results.reduce((acc, product) => {
-      return acc + product.price;
-    }, 0);
-  }, [results]);
-
+function SearchResult({
+  results,
+  totalPrice,
+  addToWishList,
+}: SearchResultProps) {
   return (
     <div>
-      <h2>
-        {new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        }).format(totalPrices)}
-      </h2>
+      {totalPrice > 0 && <h2>{totalPrice}</h2>}
 
       {results.map((product) => {
-        return <ProductItem addToWishList={addToWishList} product={product} key={product.id} />;
+        return (
+          <ProductItem
+            addToWishList={addToWishList}
+            product={product}
+            key={product.id}
+          />
+        );
       })}
     </div>
   );

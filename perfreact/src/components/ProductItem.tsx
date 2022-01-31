@@ -1,24 +1,21 @@
 import React, { memo } from "react";
-import { BsBookmarkStar } from 'react-icons/bs'
+import { BsBookmarkStar } from "react-icons/bs";
 
 interface ProductItemProps {
   product: {
     id: number;
     price: number;
+    priceFormatted: string | number;
     title: string;
   };
-  addToWishList: any;
+  addToWishList: (id: number) => void;
 }
 
-function ProductItemComponent({ product, addToWishList }: ProductItemProps) {
+function ProductItemComponent({ product, addToWishList}: ProductItemProps) {
   return (
     <div>
-      <p>
-        {product.title} - <strong>{product.price}</strong>
-        <BsBookmarkStar onClick={() => addToWishList(product.id)} style={{
-            cursor: 'pointer',
-            marginLeft: '10px'
-        }} />
+      <p onClick={() => addToWishList(product.id)}>
+        {product.title} - <strong>{product.priceFormatted}</strong>
       </p>
     </div>
   );

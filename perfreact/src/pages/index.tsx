@@ -2,9 +2,21 @@ import type { NextPage } from "next";
 import { FormEvent, useCallback, useState } from "react";
 import { SearchResult } from "../components/SearchResult";
 
+type Product = {
+  id: number;
+  price: number;
+  priceFormatted: string;
+  title: string;
+};
+
+interface Results {
+  totalPrice: number;
+  list: Product[];
+}
+
 const Home: NextPage = () => {
   const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Results>();
 
   async function handleSearch(event: FormEvent) {
     event.preventDefault();
@@ -16,7 +28,28 @@ const Home: NextPage = () => {
     const response = await fetch(`http://localhost:3333/products?q=${search}`);
     const data = await response.json();
 
-    setResults(data);
+    const formatter = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+
+    const products = data.map((product: Product) => {
+      return {
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        priceFormatted: formatter.format(product.price),
+      };
+    });
+
+    const totalPrice = data.reduce((acc: number, product: Product) => {
+      return acc + product.price;
+    }, 0);
+
+    setResults({
+      list: products,
+      totalPrice,
+    });
   }
 
   const addToWishList = useCallback(async (id: number) => {
@@ -36,17 +69,13 @@ const Home: NextPage = () => {
         <button type="submit">Buscar</button>
       </form>
 
-      <SearchResult results={results} addToWishList={addToWishList} />
+      <SearchResult
+        addToWishList={addToWishList}
+        results={results?.list || []}
+        totalPrice={Number(results?.totalPrice)}
+      />
     </div>
   );
 };
 
 export default Home;
-
-/**
- o useCallback server para memorizar uma função, já o useMemo server para memorizar um resultado, um valor e não uma função.
-
- toda vez que esse compoente atualiza a nossa função addToWishList ele é recriada do zero, ocupando um novo espaço na mémoria, como a função tá sendo repaasada, é importade que usamos o useCallback
-
- e o useCallback tem o mesmo array de dependencio do useEffect que usamos bastante no ReactJS
-*/
