@@ -8,7 +8,7 @@ jest.mock('next-auth/client')
 
 describe('SingInButton Component', () => {
   // verificar se o meu header tá renderizando da forma correta
-  test('renders correctly when user is not authenticated', () => {
+  it('renders correctly when user is not authenticated', () => {
     const useSessionMocked = mocked(useSession);
 
     // ele vai mockar somente o próximo retorno com o "mockReturnValueOnce", então somente dentro deste deste ele vai deixar o user como deslogado
@@ -22,7 +22,7 @@ describe('SingInButton Component', () => {
     expect(screen.getByText('Login com GitHub')).toBeInTheDocument()
   })
 
-  test('renders correctly when user is authenticated', () => {
+  it('renders correctly when user is authenticated', () => {
     const useSessionMocked = mocked(useSession);
 
     useSessionMocked.mockReturnValueOnce([{

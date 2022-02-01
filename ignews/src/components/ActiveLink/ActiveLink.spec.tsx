@@ -13,7 +13,7 @@ jest.mock('next/dist/client/router', () => {
 
 describe('ActiveLink Component', () => {
   // verificar se o meu active link tá renderizando da forma correta
-  test('renders correctly', () => {
+  it('renders correctly', () => {
     render(
       <ActiveLink
         href="/"
@@ -22,13 +22,13 @@ describe('ActiveLink Component', () => {
         <a>Home</a>
       </ActiveLink>
     )
-  
-    // experado -> procurar um texte "Home" que esteja no documento testado
-    expect(screen.getByText('Home')).toBeInTheDocument()
-  })
+    
+      // experado -> procurar um texte "Home" que esteja no documento testado
+      expect(screen.getByText('Home')).toBeInTheDocument()
+    })
   
   // verificar se o meu active link está recebendo a classe active
-  test('adds active class if the link as current active', () => {
+  it('adds active class if the link as current active', () => {
     render(
       <ActiveLink
         href="/"
