@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "coverage": "jest --coverage",
     "stripe": "stripe-cli/stripe.exe listen  --forward-to localhost:3000/api/webhooks"
   },
   "dependencies": {
