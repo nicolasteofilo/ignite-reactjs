@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { SideBar } from "../../components/SideBar";
 
 const genres = [
@@ -15,14 +15,17 @@ const genres = [
 ];
 
 describe("SideBar Component", () => {
+  const onClick = (id: number) => {};
   it("render correctly", () => {
     render(
       <SideBar
         genres={genres as any}
         selectedGenreId={1}
-        buttonClickCallback={jest.fn()}
+        buttonClickCallback={() => onClick(1)}
       />
     );
+
+    const sideBarElement = screen.getByLabelText("button-genres");
 
     expect(screen.getByRole("navigation"));
     expect(screen.getByText("Ação")).toBeInTheDocument();

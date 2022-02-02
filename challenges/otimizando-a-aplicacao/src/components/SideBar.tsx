@@ -27,6 +27,7 @@ export function SideBar({
             key={String(genre.id)}
             title={genre.title}
             iconName={genre.name}
+            aria-label="button-genres"
             onClick={() => buttonClickCallback(genre.id)}
             selected={selectedGenreId === genre.id}
           />

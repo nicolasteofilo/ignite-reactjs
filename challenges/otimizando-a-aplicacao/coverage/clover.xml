@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1643813587738" clover="3.2.0">
-  <project timestamp="1643813587738" name="All files">
-    <metrics statements="13" coveredstatements="8" conditionals="6" coveredconditionals="2" methods="7" coveredmethods="6" elements="26" coveredelements="16" complexity="0" loc="13" ncloc="13" packages="1" files="4" classes="4"/>
+<coverage generated="1643824812612" clover="3.2.0">
+  <project timestamp="1643824812612" name="All files">
+    <metrics statements="14" coveredstatements="9" conditionals="10" coveredconditionals="6" methods="8" coveredmethods="7" elements="32" coveredelements="22" complexity="0" loc="14" ncloc="14" packages="1" files="5" classes="5"/>
+    <file name="Button.tsx" path="/home/nicolas/www/Ignite/Ignite-ReactJs/challenges/otimizando-a-aplicacao/src/components/Button.tsx">
+      <metrics statements="1" coveredstatements="1" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+      <line num="13" count="3" type="stmt"/>
+    </file>
     <file name="Content.tsx" path="/home/nicolas/www/Ignite/Ignite-ReactJs/challenges/otimizando-a-aplicacao/src/components/Content.tsx">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <line num="23" count="1" type="stmt"/>
@@ -25,7 +29,7 @@
       <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <line num="18" count="1" type="stmt"/>
       <line num="26" count="2" type="stmt"/>
-      <line num="30" count="0" type="stmt"/>
+      <line num="31" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>
