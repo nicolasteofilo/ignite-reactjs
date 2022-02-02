@@ -7,16 +7,20 @@
     "dev": "webpack serve",
     "server": "json-server server.json --port 3333",
     "build": "cross-env NODE_ENV=production webpack",
-    "test": "jest --watchAll",
-    "coverage": "jest --coverage"
+    "test": "jest",
+    "coverage": "jest --coverage --watch"
   },
   "dependencies": {
+    "@types/enzyme": "^3.10.11",
     "axios": "^0.21.1",
+    "enzyme": "^3.11.0",
+    "jest-svg-transformer": "^1.0.0",
     "json-server": "^0.16.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-feather": "^2.0.9",
-    "react-icons": "^4.2.0"
+    "react-icons": "^4.2.0",
+    "svg-jest": "^1.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",

@@ -8,6 +8,13 @@ module.exports = {
   moduleNameMapper: {
     "\\.(scss|css|sass)$": "identity-obj-proxy",
   },
+  collectCoverage: true,
+  collectCoverageFrom: [
+    "src/**/*.tsx",
+    "!src/**/*.spec.tsx",
+    "!src/**/App.tsx",
+    "!src/**/index.tsx",
+  ],
   // indica que ambiente os testes estão executando, no caso a DOM( arvore de elementos HTML )
   testEnvironment: "jsdom",
 };
