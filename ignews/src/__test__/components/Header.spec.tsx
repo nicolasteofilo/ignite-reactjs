@@ -26,8 +26,6 @@ describe('Header Component', () => {
       <Header />
     )
 
-    screen.logTestingPlaygroundURL();
-  
     // experado -> procurar um texte "Home" que esteja no documento testado
     expect(screen.getByText('Home')).toBeInTheDocument()
     expect(screen.getByText('Posts')).toBeInTheDocument()
