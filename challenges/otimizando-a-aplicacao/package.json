@@ -7,7 +7,8 @@
     "dev": "webpack serve",
     "server": "json-server server.json --port 3333",
     "build": "cross-env NODE_ENV=production webpack",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -24,7 +25,11 @@
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@testing-library/dom": "^8.11.3",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
     "@types/react-dom": "^17.0.0",
+    "babel-jest": "^27.4.6",
     "babel-loader": "^8.2.2",
     "babel-preset-react-app": "^10.0.0",
     "cross-env": "^7.0.3",
@@ -32,6 +37,8 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.1",
     "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.7",
+    "jest-dom": "^4.0.0",
     "node-sass": "^5.0.0",
     "react-app-polyfill": "^2.0.0",
     "react-refresh": "^0.9.0",
