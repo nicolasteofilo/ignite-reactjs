@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'http://localhost:3000/api',
+  baseURL: "https://epic-shannon-17e1b6.netlify.app/api",
 });
