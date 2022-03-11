@@ -9,21 +9,13 @@
   <br>
   <br>
 
-  <img alt="Language count" src="https://img.shields.io/github/repo-size/khalleb/ignews"/>
-
-  <a href="https://rocketseat.com.br">
-    <img alt="Made by Rocketseat" src="https://img.shields.io/badge/made%20by-Rocketseat-%237519C1">
+  <a href="https://www.linkedin.com/in/nicolasteofilo/">
+    <img alt="Made by Nicolas Teófilo" src="https://img.shields.io/badge/nicolasteofilo-linkedin-blue">
   </a>
 
-  <a href="https://www.linkedin.com/in/khalleb/">
-    <img alt="Made by Khalleb" src="https://img.shields.io/badge/made%20by-khalleb-%237519C1">
+  <a href="https://github.com/nicolasteofilo/ignews/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/badge/last%20commit-February%202022-orange">
   </a>
-
-  <a href="https://github.com/khalleb/ignews/commits/main">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/khalleb/ignews">
-  </a>
-
-  <img alt="License" src="https://img.shields.io/github/license/khalleb/ignews">
 </p>
 
 ---
@@ -81,7 +73,7 @@ $ yarn dev
 
 # The server will initialize in the <http://localhost:3000>
 ```
-
+<!-- 
 ## :framed_picture: Imagens
 
 <h1 align="center">
@@ -89,4 +81,4 @@ $ yarn dev
     <img alt = "Web app" src = "./.github/image-02.png" width = "500px" />
     <img alt = "Web app" src = "./.github/image-03.png" width = "500px" />
     <img alt = "Web app" src = "./.github/image-04.png" width = "500px" />
-</h1>
+</h1> -->
